@@ -14,6 +14,7 @@ app.config["SECRET_KEY"] = "quiz-application-secret-key"
 def get_db_connection():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
+    conn.execute("PRAGMA foreign_keys = ON")
     return conn
 
 
@@ -337,6 +338,17 @@ def questions_page():
                 error="Please fill in every field and choose a valid correct answer.",
             )
 
+        if category_id not in {category["id"] for category in categories}:
+            questions = get_questions_for_management(search_query, category_filter)
+            return render_template(
+                "questions.html",
+                categories=categories,
+                questions=questions,
+                search_query=search_query,
+                category_filter=category_filter,
+                error="Please choose an available category.",
+            )
+
         if correct_option not in {"A", "B", "C", "D"}:
             questions = get_questions_for_management(search_query, category_filter)
             return render_template(
@@ -393,6 +405,22 @@ def edit_question(question_id):
                 categories=categories,
                 question=question,
                 error="Please complete every field before saving changes.",
+            )
+
+        if category_id not in {category["id"] for category in categories}:
+            return render_template(
+                "edit_question.html",
+                categories=categories,
+                question=question,
+                error="Please choose an available category.",
+            )
+
+        if correct_option not in {"A", "B", "C", "D"}:
+            return render_template(
+                "edit_question.html",
+                categories=categories,
+                question=question,
+                error="Correct answer must be one of A, B, C, or D.",
             )
 
         conn = get_db_connection()

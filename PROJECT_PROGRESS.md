@@ -9,8 +9,9 @@
 - Question management with search and filter added.
 - Quiz history and score summary implemented.
 - Responsive frontend styling added.
+- End-to-end checks completed for categories, scoring, unanswered answers, history, search/filter, and question add/edit/delete.
+- Invalid question category and answer inputs are validated before saving.
+- App code integrated into the repository's default `main` branch.
 
 ## Next steps
-- Run app end-to-end and test each feature.
-- Check for issues in database flows and frontend behavior.
-- Finalize documentation and validation.
+- Continue the 12-day roadmap with Git branching and GitHub practice.
