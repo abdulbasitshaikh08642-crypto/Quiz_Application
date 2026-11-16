@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Quiz Master | Result{% endblock %}
+
+{% block content %}
+  <section class="section-block result-box">
+    <h1>Quiz Result</h1>
+    <p class="result-label">Category: <strong>{{ attempt.category_name }}</strong></p>
+    <p class="score-display">{{ attempt.score }} / {{ attempt.total_questions }}</p>
+    <p>Percentage: {{ attempt.percentage }}%</p>
+    <p>Unanswered: {{ attempt.unanswered }}</p>
+
+    {% if attempt.percentage >= 80 %}
+      <div class="status success">Excellent! You did very well.</div>
+    {% elif attempt.percentage >= 50 %}
+      <div class="status good">Good effort! Keep practicing.</div>
+    {% else %}
+      <div class="status warning">Keep trying! Review the questions and try again.</div>
+    {% endif %}
+
+    <div class="result-actions">
+      <a class="primary-btn" href="{{ url_for('quiz_page', category=attempt.category_id if attempt.category_id is defined else '') }}">Try another quiz</a>
+      <a class="secondary-btn" href="{{ url_for('history_page') }}">View history</a>
+    </div>
+  </section>
+{% endblock %}

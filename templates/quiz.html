@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Quiz Master | Quiz{% endblock %}
+
+{% block content %}
+  <section class="section-block">
+    {% if category %}
+      <div class="quiz-header">
+        <h1>{{ category.name }} Quiz</h1>
+        <p>{{ category.description or 'Test your knowledge in this topic.' }}</p>
+      </div>
+    {% endif %}
+
+    {% if message %}
+      <div class="message warning">{{ message }}</div>
+    {% endif %}
+
+    {% if categories is defined %}
+      <form method="get" action="{{ url_for('quiz_page') }}" class="category-picker">
+        <label for="category">Choose a category:</label>
+        <select id="category" name="category">
+          {% for item in categories %}
+            <option value="{{ item.id }}" {% if category and item.id == category.id %}selected{% endif %}>{{ item.name }}</option>
+          {% endfor %}
+        </select>
+        <button class="primary-btn" type="submit">Load category</button>
+      </form>
+    {% endif %}
+
+    {% if questions %}
+      <form method="post" action="{{ url_for('submit_quiz') }}" class="quiz-form">
+        <input type="hidden" name="category_id" value="{{ category.id }}" />
+
+        {% for question in questions %}
+          <div class="question-card">
+            <h3>Q{{ loop.index }}. {{ question.question_text }}</h3>
+            <div class="option-list">
+              {% for option_key, option_value in [('A', question.option_a), ('B', question.option_b), ('C', question.option_c), ('D', question.option_d)] %}
+                <label class="option-item">
+                  <input type="radio" name="answer_{{ question.id }}" value="{{ option_key }}" required />
+                  <span>{{ option_key }}. {{ option_value }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+
+        <button class="primary-btn submit-btn" type="submit" onclick="this.disabled = true; this.form.submit();">Submit quiz</button>
+      </form>
+    {% endif %}
+  </section>
+{% endblock %}

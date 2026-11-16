@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %}Quiz Master | Manage Questions{% endblock %}
+
+{% block content %}
+  <section class="section-block">
+    <h1>Manage Questions</h1>
+
+    <form method="get" action="{{ url_for('questions_page') }}" class="filter-form">
+      <input type="text" name="search" value="{{ search_query }}" placeholder="Search questions" />
+      <select name="category_filter">
+        <option value="">All categories</option>
+        {% for category in categories %}
+          <option value="{{ category.id }}" {% if category_filter == category.id %}selected{% endif %}>{{ category.name }}</option>
+        {% endfor %}
+      </select>
+      <button class="primary-btn" type="submit">Filter</button>
+    </form>
+
+    {% if error %}
+      <div class="message error">{{ error }}</div>
+    {% endif %}
+
+    <div class="admin-panel">
+      <h2>Add a new question</h2>
+      <form method="post" action="{{ url_for('questions_page') }}" class="question-form">
+        <div class="grid-two">
+          <label>
+            Category
+            <select name="category_id" required>
+              {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+              {% endfor %}
+            </select>
+          </label>
+          <label>
+            Correct answer
+            <select name="correct_option" required>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          Question
+          <textarea name="question_text" rows="3" required></textarea>
+        </label>
+
+        <div class="grid-two">
+          <label>
+            Option A
+            <input type="text" name="option_a" required />
+          </label>
+          <label>
+            Option B
+            <input type="text" name="option_b" required />
+          </label>
+          <label>
+            Option C
+            <input type="text" name="option_c" required />
+          </label>
+          <label>
+            Option D
+            <input type="text" name="option_d" required />
+          </label>
+        </div>
+
+        <button class="primary-btn" type="submit">Save question</button>
+      </form>
+    </div>
+
+    <div class="question-table-wrapper">
+      <h2>Question list</h2>
+      {% if questions %}
+        <table class="question-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Question</th>
+              <th>Correct</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for question in questions %}
+              <tr>
+                <td>{{ question.category_name }}</td>
+                <td>{{ question.question_text }}</td>
+                <td>{{ question.correct_option }}</td>
+                <td class="action-buttons">
+                  <a class="secondary-btn small-btn" href="{{ url_for('edit_question', question_id=question.id) }}">Edit</a>
+                  <form method="post" action="{{ url_for('delete_question', question_id=question.id) }}" onsubmit="return confirm('Delete this question?');">
+                    <button class="danger-btn small-btn" type="submit">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p>No questions match your filters.</p>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}

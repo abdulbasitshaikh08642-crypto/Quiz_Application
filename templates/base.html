@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Quiz App{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-bar">
+        <div class="brand">
+          <a href="{{ url_for('index') }}">Quiz Master</a>
+        </div>
+        <nav class="main-nav">
+          <a href="{{ url_for('index') }}">Home</a>
+          <a href="{{ url_for('history_page') }}">History</a>
+          <a href="{{ url_for('questions_page') }}">Manage Questions</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container page-content">
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>

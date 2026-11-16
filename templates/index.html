@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Quiz Master | Home{% endblock %}
+
+{% block content %}
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Learning made simple</p>
+      <h1>Quiz Master</h1>
+      <p>
+        Challenge yourself with fun quizzes across different categories. Build knowledge,
+        test your speed, and review your scores in one place.
+      </p>
+    </div>
+    <div class="hero-card">
+      <h2>Quick start</h2>
+      <p>{{ total_questions }} questions ready</p>
+      <a class="primary-btn" href="{{ url_for('quiz_page', category=categories[0].id if categories else 0) }}">Start quiz</a>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <h2>Available categories</h2>
+    {% if categories %}
+      <div class="category-grid">
+        {% for category in categories %}
+          <div class="category-card">
+            <h3>{{ category.name }}</h3>
+            <p>{{ category.description or 'A set of beginner-friendly questions.' }}</p>
+            <a class="secondary-btn" href="{{ url_for('quiz_page', category=category.id) }}">Take {{ category.name }}</a>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>No categories are available yet.</p>
+    {% endif %}
+  </section>
+{% endblock %}
