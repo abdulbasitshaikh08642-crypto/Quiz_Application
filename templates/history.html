@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Quiz Master | History{% endblock %}
+
+{% block content %}
+  <section class="section-block">
+    <h1>Quiz History</h1>
+
+    {% if attempts %}
+      <div class="history-list">
+        {% for attempt in attempts %}
+          <div class="history-item">
+            <div>
+              <h3>{{ attempt.category_name }}</h3>
+              <p>{{ attempt.attempted_at }}</p>
+            </div>
+            <div class="history-score">
+              <strong>{{ attempt.score }}/{{ attempt.total_questions }}</strong>
+              <span>{{ attempt.percentage }}%</span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>No quiz attempts yet. Start a quiz to create your first record.</p>
+    {% endif %}
+  </section>
+{% endblock %}
