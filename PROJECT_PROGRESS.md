@@ -1,7 +1,7 @@
 # Project Progress
 
 ## Current milestone
-- Day 10 — Automated testing and GitHub Actions.
+- Day 11 — Documentation and GitHub collaboration.
 
 ## Completed
 - Project structure created.
@@ -17,14 +17,15 @@
 - App code integrated into the repository's default `main` branch.
 - Automated regression tests and a GitHub Actions workflow added locally.
 - All 6 automated tests pass locally.
+- GitHub Actions `Tests` workflow passed for commit `ec016ac`.
 
 ## Next steps
-- Confirm the GitHub Actions check passes after the test/CI changes are pushed.
-- Finish Day 11 documentation/collaboration practice and Day 12 release steps.
+- Practise the GitHub Issues and Pull Requests flow for a small project change.
+- Then complete final Day 12 checks and prepare a version tag/release.
 
 ## Application status
 - Flask and SQLite features are implemented and covered by automated tests.
-- No known application bugs; GitHub Actions has not run yet for the new workflow.
+- No known application bugs; GitHub Actions is green.
 
 ## Files created or modified in this milestone
 - `tests/test_app.py`
