@@ -6,9 +6,9 @@
 - The project was implemented ahead of the day-by-day schedule during setup; keep that work and do not rebuild it.
 
 ## Current milestone
-- Day 1 — Project setup and Git basics.
-- Setup, Flask installation, initial app run, repository initialization, initial commit, and GitHub push are already complete.
-- Day 1 is in progress; wait for the user to confirm before marking the day complete.
+- Day 1 — Project setup and Git basics — complete.
+- Setup, Flask installation, initial app run, repository initialization, initial commit, and GitHub push are complete.
+- Day 2 is scheduled for 2026-11-17.
 
 ## Completed
 - Project structure created.
@@ -42,8 +42,8 @@
 - `PROJECT_PROGRESS.md`
 
 ## Git commands practised
-- The repository was initialized, committed, connected to GitHub, and pushed in this session.
-- The required operations were executed during setup; the beginner day-by-day practice sequence has not yet been followed.
+- The repository was initialized, committed, connected to GitHub, and pushed.
+- User preference: assistant executes Git commands; user does not want to run them manually.
 
 ## Commits
 - `2426ba3` — Initial quiz app setup
