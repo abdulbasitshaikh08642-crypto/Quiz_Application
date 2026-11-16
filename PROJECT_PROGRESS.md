@@ -1,7 +1,14 @@
 # Project Progress
 
+## Roadmap schedule
+- Day 1 starts: 2026-11-16.
+- Day 12 target: 2026-11-27.
+- The project was implemented ahead of the day-by-day schedule during setup; keep that work and do not rebuild it.
+
 ## Current milestone
-- Day 11 — Documentation and GitHub collaboration.
+- Day 1 — Project setup and Git basics.
+- Setup, Flask installation, initial app run, repository initialization, initial commit, and GitHub push are already complete.
+- Day 1 is in progress; wait for the user to confirm before marking the day complete.
 
 ## Completed
 - Project structure created.
@@ -20,8 +27,9 @@
 - GitHub Actions `Tests` workflow passed for commit `ec016ac`.
 
 ## Next steps
-- Practise the GitHub Issues and Pull Requests flow for a small project change.
-- Then complete final Day 12 checks and prepare a version tag/release.
+- Continue Day 1 step by step from the existing project; do not redo completed setup.
+- Follow the remaining roadmap across 2026-11-17 through 2026-11-27, using the completed features as early progress.
+- Day 11 collaboration and Day 12 release milestones remain to be practiced/completed on their scheduled days.
 
 ## Application status
 - Flask and SQLite features are implemented and covered by automated tests.
@@ -34,10 +42,12 @@
 - `PROJECT_PROGRESS.md`
 
 ## Git commands practised
-- The app was pushed to GitHub and both `main` and `master` were synchronized in earlier work.
-- Branch and push workflows were used for the previous GitHub sync; the CI update is the current GitHub practice.
+- The repository was initialized, committed, connected to GitHub, and pushed in this session.
+- The required operations were executed during setup; the beginner day-by-day practice sequence has not yet been followed.
 
 ## Commits
 - `2426ba3` — Initial quiz app setup
 - `3d60cea` — Merge app into the default `main` branch
 - `25a249c` — Validate quiz management inputs
+- `ec016ac` — Add automated tests and GitHub Actions CI
+- `5b7126d` — Record passing CI workflow
