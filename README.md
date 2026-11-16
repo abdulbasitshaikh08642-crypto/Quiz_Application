@@ -23,3 +23,11 @@ python app.py
 ```
 
 These commands are for Windows PowerShell. Then open http://127.0.0.1:5000 in your browser.
+
+## Run tests
+
+```powershell
+python -m unittest discover -s tests -v
+```
+
+GitHub Actions runs the same test suite on pushes and pull requests.
